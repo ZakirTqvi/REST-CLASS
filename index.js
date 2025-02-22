@@ -11,8 +11,23 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
-app.get("/", (req, res) => {
-    res.send("server is working well!");
+let posts = [
+    {
+       name:"Zakir",
+       message: "I am feeling good"
+    },
+    {
+       name:"Shadab",
+       message: "I am learning web dev"
+    },
+    {
+       name:"Zafar",
+       message: "Hi!..."
+    }
+]
+
+app.get("/posts", (req, res) => {
+    res.render("index.ejs", { posts });
 });
 
 app.listen(port, () => {
