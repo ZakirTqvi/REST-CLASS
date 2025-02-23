@@ -13,21 +13,31 @@ app.set("views", path.join(__dirname, "/views"));
 
 let posts = [
     {
-       name:"Zakir",
-       message: "I am feeling good"
+       username:"Zakir",
+       content: "I am feeling good"
     },
     {
-       name:"Shadab",
-       message: "I am learning web dev"
+       username:"Shadab",
+       content: "I am learning web dev"
     },
     {
-       name:"Zafar",
-       message: "Hi!..."
+       username:"Zafar",
+       content: "Hi!..."
     }
 ]
 
 app.get("/posts", (req, res) => {
     res.render("index.ejs", { posts });
+});
+
+app.get("/posts/new", (req, res) => {
+    res.render("new.ejs");
+});
+
+app.post("/posts", (req, res) => {
+    let { username, content } = req.body;
+    posts.push({username, content});
+    res.redirect("/posts");
 });
 
 app.listen(port, () => {

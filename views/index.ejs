@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Page</title>
+    <title>All Posts</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>Quora</h1>
+    <h1>Quora Posts</h1>
     <% for(let post of posts) { %>
         <div class="post">
-            <h2>@<%= post.name  %></h2>
-            <p><%= post.message %></p>
+            <h2 class="user">@<%= post.username  %></h2>
+            <p class="content"><%= post.content %></p>
         </div>
         
     <%  } %>
+
+    <br/>
+    <br/>
+    <a href="http://localhost:3000/posts/new">Create a new posts</a>
 </body>
 </html>
